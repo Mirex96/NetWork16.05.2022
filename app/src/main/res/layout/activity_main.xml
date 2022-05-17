@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Загрузка данных с сервера"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="textLastRequest, textSuccessfulRequests" />
+
+    <Space
+        android:id="@+id/spacer"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/barrier"
+        app:layout_constraintTop_toTopOf="@+id/textLastRequest" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:visibility="gone"
+        android:src="@drawable/ic_floating_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textLastRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="100dp"
+        android:text="Последний успешный запрос:"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonLastRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Посмотреть"
+        android:textAllCaps="false"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textLastRequest"
+        app:layout_constraintStart_toEndOf="@+id/spacer"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/lastRequestGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="textLastRequest, buttonLastRequest" />
+
+    <TextView
+        android:id="@+id/textSuccessfulRequests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Список успешных запросов:"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/textLastRequest"
+        app:layout_constraintTop_toBottomOf="@+id/textLastRequest" />
+
+    <Button
+        android:id="@+id/buttonSuccessfulRequests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Посмотреть"
+        android:textAllCaps="false"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textSuccessfulRequests"
+        app:layout_constraintStart_toEndOf="@+id/spacer" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/successfulRequestsGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="textSuccessfulRequests, buttonSuccessfulRequests" />
+
+    <TextView
+        android:id="@+id/textRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Запросить данные с сервера:"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сделать запрос"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textRequest" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/requestGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="textRequest, buttonRequest" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
