@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity(), StoreContract.View {
     private lateinit var requestGroup: View
     private lateinit var buttonLastRequest: Button
     private lateinit var buttonSuccessfulRequests: Button
+    private lateinit var buttonRequest: Button
 
     private val presenter: StoreContract.Presenter by lazy {
         StorePresenter.create(StoreRepository.create())
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity(), StoreContract.View {
         requestGroup = findViewById(R.id.requestGroup)
         buttonLastRequest = findViewById(R.id.buttonLastRequest)
         buttonSuccessfulRequests = findViewById(R.id.buttonSuccessfulRequests)
+        buttonRequest = findViewById(R.id.buttonRequest)
 
         presenter.onAttach(this)
         presenter.onLoad()
