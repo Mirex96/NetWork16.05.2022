@@ -2,13 +2,21 @@ package com.example.network16052022
 
 import android.os.Handler
 import android.os.Looper
+import com.example.network16052022.StoreContract.*
+import com.example.network16052022.StoreContract.Presenter.*
+import com.example.network16052022.utils.ui
+import java.time.OffsetDateTime
+import kotlin.concurrent.thread
 
 class StorePresenter private constructor(
-    private val repository: StoreContract.Repository
-) : StoreContract.Presenter {
-    private var view: StoreContract.View? = null
+    private val repository: Repository
+) : Presenter {
+    private var view: View? = null
 
-    override fun onAttach(view: StoreContract.View) {
+    private lateinit var state: State
+
+
+    override fun onAttach(view: View) {
         this.view = view
     }
 
@@ -18,43 +26,46 @@ class StorePresenter private constructor(
 
     override fun onLoad() {
         view?.showProgress()
-        Handler(Looper.getMainLooper()).postDelayed(
-            {
-                view?.showContent()
-                view?.hideProgress()
-            }, 3_000L
+        view?.hideError()
+        thread {
+            repository.onLoad({
+                ui {
+                    view?.showContent()
+                    view?.hideProgress()
+                    val time = OffsetDateTime.now().toString()
+                    view?.showLastActivityRequest(activity = it.activity, time)
 
-        )
+                    state = State(it, time)
+                }
+            }, {
+                // Отображение ошибки
+                ui {
+                    view?.showContent()
+                    view?.showError(it)       // it - передаем строку
+                    view?.hideProgress()
+                }
+            })
+        }
     }
 
-    override fun onLastRequest() {
-        view?.showProgress()
-        Handler(Looper.getMainLooper()).postDelayed(
-            {
-                view?.showStartActivityLastRequest()
-                view?.hideProgress()
+    override fun onLastRequest(activity: String, time: String) {
+        state.let {
+            view?.showStartActivityLastRequest(it.activity.activity, it.time)
 
-            },
-            2_000L,
-        )
+        }
 
 
     }
 
     override fun onSuccessfulRequests() {
-        view?.showProgress()
-        Handler(Looper.getMainLooper()).postDelayed(
-            {
-                view?.showStartActivitySuccessfulRequests()
-                view?.hideProgress()
-            }, 2_000L
-
+        view?.showStartActivitySuccessfulRequests(
+            repository.getStorageData().map { it -> it.activity }
         )
     }
 
     companion object {
         fun create(
-            repository: StoreContract.Repository
+            repository: Repository
         ) = StorePresenter(repository)
     }
 

@@ -19,10 +19,14 @@
 
     <TextView
         android:id="@+id/textSuccessfulRequestsName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="100dp"
-        android:text="Список запросов:"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/border_text_bg"
+        android:gravity="center"
+        android:text="Список запросов"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,16 +37,22 @@
         android:id="@+id/textSuccessfulRequestsNameResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textSuccessfulRequestsName" />
 
     <TextView
         android:id="@+id/textSuccessfulRequestsTime"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="50dp"
-        android:text="Время запросов с сервера:"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/border_text_bg"
+        android:gravity="center"
+        android:text="Время запросов с сервера"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,19 +63,24 @@
         android:id="@+id/textSuccessfulRequestsTimeResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textSuccessfulRequestsTime" />
 
     <Button
         android:id="@+id/buttonSuccessfulRequestsResult"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        android:background="@drawable/background_btn"
         android:text="Назад"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/textSuccessfulRequestsTimeResult" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,29 +22,15 @@ class ActivitySuccessfulRequests : AppCompatActivity() {
         val buttonSuccessfulRequestsResult =
             findViewById<Button>(R.id.buttonSuccessfulRequestsResult)
 
-        val handler = Handler(Looper.getMainLooper())
 
-        thread {
-            try {
-                val activity = NetworkModule.api.getActivity()
-                val response = activity.execute()
+        val activity = intent.putExtra(KEY_ACTIVITY, String())
+        textSuccessfulRequestsNameResult.text = activity.toString()
 
-                if (response.isSuccessful) {
-                    val body = response.body()
-                    val activityParam = body?.activity ?: ""
-                    val typeParam = body?.type ?: ""
 
-                    handler.post {
-                        textSuccessfulRequestsNameResult.text = activityParam
-                        textSuccessfulRequestsTimeResult.text = typeParam
-                    }
-                } else {
-                    Log.d("VB", "ERROR")
-                }
-            } catch (e: Throwable) {
-                Log.d("VB", e.toString())
-            }
-        }
+
+
+
+
 
 
         buttonSuccessfulRequestsResult.setOnClickListener {

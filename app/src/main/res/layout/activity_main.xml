@@ -33,16 +33,6 @@
         app:layout_constraintStart_toStartOf="@+id/barrier"
         app:layout_constraintTop_toTopOf="@+id/textLastRequest" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:visibility="gone"
-        android:src="@drawable/ic_floating_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
 
     <TextView
         android:id="@+id/textLastRequest"
@@ -62,6 +52,7 @@
         android:layout_height="wrap_content"
         android:text="Посмотреть"
         android:textAllCaps="false"
+        android:background="@drawable/background_btn"
         app:layout_constraintBaseline_toBaselineOf="@+id/textLastRequest"
         app:layout_constraintStart_toEndOf="@+id/spacer"
         app:layout_constraintTop_toTopOf="parent" />
@@ -88,6 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Посмотреть"
+        android:background="@drawable/background_btn"
         android:textAllCaps="false"
         app:layout_constraintBaseline_toBaselineOf="@+id/textSuccessfulRequests"
         app:layout_constraintStart_toEndOf="@+id/spacer" />
@@ -96,6 +88,7 @@
         android:id="@+id/successfulRequestsGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/background_btn"
         android:visibility="gone"
         app:constraint_referenced_ids="textSuccessfulRequests, buttonSuccessfulRequests" />
 
@@ -116,9 +109,34 @@
         android:layout_height="wrap_content"
         android:text="Сделать запрос"
         android:textAllCaps="false"
+        android:layout_margin="16dp"
+        android:background="@drawable/background_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textRequest" />
+
+
+    <TextView
+        android:id="@+id/textLastActivityRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginTop="50dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRequest" />
+
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLastActivityRequest" />
+
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/requestGroup"
@@ -136,5 +154,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/contentGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="lastRequestGroup,successfulRequestsGroup,requestGroup, textLastActivityRequest,text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
